@@ -1,0 +1,53 @@
+.standalone {
+    width: auto;
+    height: 10em;
+    right: -6em;
+    top: -5em;
+    position: absolute;
+
+    .hero {
+        width: auto;
+        height: 100%;
+        max-width: fit-content;
+    }
+}
+
+@media (min-width: 640px) {
+    .standalone {
+        .hero {
+            height: 16em;
+            right: -6em;
+            top: -6em;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .blobContainer {
+        .hero {
+            width: 50em;
+            max-height: 30em;
+            right: -7em;
+            top: -15em;
+            transform: rotate(-30deg);
+        }
+    }
+
+    .standalone {
+        .hero {
+            height: 21em;
+            right: -8em;
+            top: -5em;
+        }
+    }
+}
+
+@media (min-width: 1280px) {
+    .standalone {
+        .hero {
+            height: 30em;
+            right: -13em;
+            top: -9em;
+        }
+    }
+}
