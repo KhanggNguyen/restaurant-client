@@ -17,6 +17,9 @@ export default {
             minWidth: {
                 80: "20rem",
             },
+            minWidth: {
+                80: "10rem",
+            },
         },
     },
     plugins: [],
