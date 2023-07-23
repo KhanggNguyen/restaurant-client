@@ -10,7 +10,7 @@
 
 <div
     style="background-color: #1d2124;"
-    class="flex min-w-full flex-col items-center justify-center pt-10 md:pt-16"
+    class="flex min-w-full flex-col items-center justify-center pt-10 md:pt-16 m-x-auto"
 >
     <div class="max-w-screen-2xl flex h-full w-full flex-wrap justify-between">
         <div class={`${descriptionContainerStyle}`}>

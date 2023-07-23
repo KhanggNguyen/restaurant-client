@@ -34,7 +34,7 @@
     </div>
     <div class="relative flex w-1/2 flex-col">
         <div class="standalone">
-            <img class="hero" alt="hero" src="/hero-image.png" />
+            <img class="hero" alt="hero" src="/images/hero-image.png" />
         </div>
     </div>
 </div>

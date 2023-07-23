@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$primary-color: hsl(0,0%,30%);
+
+.footer{
+    background-color: #{$primary-color} ;
+}

@@ -1,0 +1,29 @@
+$animationSpeed: 5s;
+$width: 250px;
+
+// Animation
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
+}
+
+.slider {
+    .slide-track {
+        animation: scroll $animationSpeed ease-in-out infinite;
+        display: flex;
+        width: calc(250px * 14);
+
+        &:hover {
+            animation-play-state: paused;
+        }
+
+        .slide {
+            height: 300px;
+            width: 250px;
+        }
+    }
+}
