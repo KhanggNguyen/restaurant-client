@@ -9,6 +9,9 @@ export default {
             xl: "1280px",
         },
         extend: {
+            colors: {
+                "slight-gray": "#F5F5F5",
+            },
             height: {
                 448: "112rem",
                 456: "114rem",

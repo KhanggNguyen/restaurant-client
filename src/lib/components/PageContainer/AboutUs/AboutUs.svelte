@@ -1,9 +1,11 @@
+<script>
+    import "./AboutUs.scss";
+</script>
+
 <div
     class="flex w-full flex-wrap items-center justify-center bg-white pb-4 pl-7 pr-7 pt-4 md:pl-0 md:pr-0"
 >
-    <div
-        class="img-container"
-    >
+    <div class="img-container">
         <img alt="about" src="/hero-image.png" />
     </div>
     <div class="2xl:ml-16 flex flex-col md:ml-6 md:w-1/2">
@@ -22,8 +24,6 @@
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur."
         </p>
-        <p style="font-family: Sacramento, cursive; font-size: 1rem;">
-            - Ebisu Restaurant
-        </p>
+        <p class="signing">- Ebisu Restaurant</p>
     </div>
 </div>

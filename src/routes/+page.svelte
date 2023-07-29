@@ -9,7 +9,7 @@
 
 <Separator direction='vertical' size='4em'/>
 
-<Slider />
+
 
 <Separator direction='vertical' size='4em'/>
 

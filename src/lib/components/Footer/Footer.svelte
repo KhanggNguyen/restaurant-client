@@ -6,39 +6,80 @@
 
     const sectionContainerStyle =
         "mr-2 mt-7 flex w-full flex-col pl-10 pr-10 md:mr-16 md:mt-0 md:w-auto md:pl-3 md:pr-3";
+
+    const daysOfWeek = [
+        {
+            name: "Monday",
+            value: 1,
+            time: "Closed",
+        },
+        {
+            name: "Tuesday",
+            value: 2,
+            time: "12:00–14:00, 18:30–22:00",
+        },
+        {
+            name: "Wednesday",
+            value: 3,
+            time: "12:00–14:00, 18:30–22:00",
+        },
+        {
+            name: "Thursday",
+            value: 4,
+            time: "12:00–14:00, 18:30–22:00",
+        },
+        {
+            name: "Friday",
+            value: 5,
+            time: "12:00–14:00, 18:30–22:00",
+        },
+        {
+            name: "Sartuday",
+            value: 6,
+            time: "12:00–14:00, 18:30–22:00",
+        },
+        {
+            name: "Sunday",
+            value: 7,
+            time: "12:00–14:00, 18:30–22:00",
+        },
+    ];
+
+    const isToday = (dayInt) => {
+        const day = new Date().getDay();
+
+        return day === dayInt ? "text-red-500" : "";
+    };
 </script>
 
 <div
-    style="background-color: #1d2124;"
-    class="flex min-w-full flex-col items-center justify-center pt-10 md:pt-16 m-x-auto"
+    class="mx-5 flex flex-col items-center justify-center rounded-md bg-[#F5F5F5] pt-10 md:py-16"
 >
     <div class="max-w-screen-2xl flex h-full w-full flex-wrap justify-between">
-        <div class={`${descriptionContainerStyle}`}>
-            <Logo />
-            <p
-                class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5 text-white"
-            >
-                39 Rue des Lois,
-            </p>
-            <p
-                class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5 text-white"
-            >
-                31000 Toulouse
-            </p>
+        <div class={`${descriptionContainerStyle} justify-between`}>
+            <div class="flex flex-col gap-2">
+                <Logo />
+                <p class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5">
+                    39 Rue des Lois,<br />
+                    31000 Toulouse
+                </p>
+                <span
+                    on:keydown
+                    on:keyup
+                    on:keypress
+                    on:click={() => (window.location.href = "tel:3301234567")}
+                    class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5"
+                    role="button"
+                    tabIndex={0}
+                >
+                    <i class="fa fa-phone" /> +33 01 23 45 67
+                </span>
 
-            <p
-                class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5 text-white"
-            >
-                +33 01 23 45 67
-            </p>
-
-            <p
-                class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5 text-white"
-            >
-                contact@ebisu-restaurant.com
-            </p>
-
-            <div class="flex-start mt-2 flex flex-row text-white">
+                <p class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5">
+                    contact@ebisu-restaurant.com
+                </p>
+            </div>
+            <div class="flex-start mt-2 flex flex-row">
                 <a href="#"><i class="fab fa-facebook w-11" /></a>
                 <a href="#"><i class="fab fa-instagram w-11" /></a>
                 <a href="#"><i class="fab fa-google w-11" /></a>
@@ -48,7 +89,7 @@
         <div
             class={`mr-2 mt-7  flex w-full min-w-[20rem] flex-col pl-10 pr-10 md:mr-16 md:mt-0 md:w-auto md:pl-3 md:pr-3`}
         >
-            <h3 class="mb-3 text-2xl font-bold text-white">Find us</h3>
+            <h3 class="mb-3 text-2xl font-bold">Find us</h3>
             <div
                 class="relative flex h-full w-full items-end justify-start overflow-hidden rounded-lg p-10 sm:mr-10 md:w-full lg:w-full"
             >
@@ -68,48 +109,34 @@
             </div>
         </div>
         <div class={`${sectionContainerStyle} min-w-[20rem]`}>
-            <h3 class="mb-3 text-2xl font-bold text-white">Schedule</h3>
-            <div class="flex flex-row justify-between text-white">
+            <h3 class="mb-3 text-2xl font-bold">Schedule</h3>
+            <div class="flex flex-row justify-between">
                 <div class="font-bold">
                     <ul class="flex list-none flex-col">
-                        <li class="mb-3"><span>Lundi</span></li>
-                        <li class="mb-3"><span>Mardi</span></li>
-                        <li class="mb-3"><span>Mercredi</span></li>
-                        <li class="mb-3"><span>Jeudi</span></li>
-                        <li class="mb-3"><span>Vendredi</span></li>
-                        <li class="mb-3"><span>Samedi</span></li>
-                        <li class="mb-3"><span>Dimanche</span></li>
+                        {#each daysOfWeek as day}
+                            <li class={`mb-3 ${isToday(day.value)}`}>
+                                <span>{day.name}</span>
+                            </li>
+                        {/each}
                     </ul>
                 </div>
-                <div >
+                <div>
                     <ul class="flex list-none flex-col outline-none">
-                        <li class="mb-3"><span>Closed</span></li>
-                        <li class="mb-3">
-                            <span>12:00–14:00, 18:30–22:00</span>
-                        </li>
-                        <li class="mb-3">
-                            <span>12:00–14:00, 18:30–22:00</span>
-                        </li>
-                        <li class="mb-3"><span>12:00–14:00</span></li>
-                        <li class="mb-3">
-                            <span>12:00–14:00, 18:30–22:00</span>
-                        </li>
-                        <li class="mb-3">
-                            <span>12:00–14:00, 18:30–22:00</span>
-                        </li>
-                        <li class="mb-3">
-                            <span>12:00–14:00, 18:30–22:00</span>
-                        </li>
+                        {#each daysOfWeek as day}
+                            <li class={`mb-3 ${isToday(day.value)}`}>
+                                <span>{day.time}</span>
+                            </li>
+                        {/each}
                     </ul>
                 </div>
             </div>
         </div>
         <div class={`${sectionContainerStyle}`}>
-            <h3 class="mb-3 text-2xl font-bold text-white">Our Links</h3>
+            <h3 class="mb-3 text-2xl font-bold">Our Links</h3>
             <ul class="flex list-none flex-col outline-none">
                 <li class="mb-3">
                     <a
-                        class="text-sm text-white transition-all hover:text-gray-200"
+                        class=" transition-all hover:font-bold hover:text-red-500"
                         href="#"
                     >
                         Home
@@ -117,7 +144,7 @@
                 </li>
                 <li class="mb-3">
                     <a
-                        class="text-sm text-white transition-all hover:text-gray-200"
+                        class=" transition-all hover:font-bold hover:text-red-500"
                         href="#"
                     >
                         About Us
@@ -125,7 +152,7 @@
                 </li>
                 <li class="mb-3">
                     <a
-                        class="text-sm text-white transition-all hover:text-gray-200"
+                        class=" transition-all hover:font-bold hover:text-red-500"
                         href="#"
                     >
                         Services
@@ -133,7 +160,7 @@
                 </li>
                 <li class="mb-3">
                     <a
-                        class="text-sm text-white transition-all hover:text-gray-200"
+                        class=" transition-all hover:font-bold hover:text-red-500"
                         href="#"
                     >
                         Blog
@@ -142,10 +169,13 @@
             </ul>
         </div>
     </div>
-    <div class="max-w-screen-2xl mt-7 flex w-full justify-center md:mt-1">
-        <small style="font-size: 12px" class="text-gray-300">
+</div>
+<div class="max-w-screen-2xl mt-7 flex w-full justify-center md:mt-1">
+    <div class="mb-2 flex w-full flex-col items-center">
+        <a class="text-gray-500" href="#">Mentions légales</a>
+        <p style="font-size: 1rem" class="text-black-300">
             Copyright &copy; {new Date().getFullYear()} Ebisu Restaurant. All rights
             reserved.
-        </small>
+        </p>
     </div>
 </div>
