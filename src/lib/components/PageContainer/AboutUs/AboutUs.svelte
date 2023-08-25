@@ -8,7 +8,7 @@
     <div class="img-container">
         <img alt="about" src="/hero-image.png" />
     </div>
-    <div class="2xl:ml-16 flex flex-col md:ml-6 md:w-1/2">
+    <div class="2xl:ml-16 flex flex-col md:ml-6 md:w-1/2 text-center md:text-left">
         <h1
             class="text-2xl font-extrabold text-black md:text-5xl md:font-black md:leading-normal"
         >

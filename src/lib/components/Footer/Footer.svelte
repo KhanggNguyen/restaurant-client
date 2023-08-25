@@ -55,7 +55,9 @@
 <div
     class="mx-5 flex flex-col items-center justify-center rounded-md bg-[#F5F5F5] pt-10 md:py-16"
 >
-    <div class="max-w-screen-2xl flex h-full w-full flex-wrap justify-between">
+    <div
+        class="max-w-screen-2xl flex h-full w-full flex-wrap justify-between text-center md:text-left"
+    >
         <div class={`${descriptionContainerStyle} justify-between`}>
             <div class="flex flex-col gap-2">
                 <Logo />
@@ -63,6 +65,7 @@
                     39 Rue des Lois,<br />
                     31000 Toulouse
                 </p>
+                <!-- svelte-ignore a11y-interactive-supports-focus -->
                 <span
                     on:keydown
                     on:keyup
@@ -70,7 +73,7 @@
                     on:click={() => (window.location.href = "tel:3301234567")}
                     class="mt-2 min-w-[10rem] max-w-xs font-normal leading-5"
                     role="button"
-                    tabIndex={0}
+                    tabIndex="0"
                 >
                     <i class="fa fa-phone" /> +33 01 23 45 67
                 </span>
@@ -79,7 +82,7 @@
                     contact@ebisu-restaurant.com
                 </p>
             </div>
-            <div class="flex-start mt-2 flex flex-row">
+            <div class="mt-2 flex flex-row justify-center">
                 <a href="#"><i class="fab fa-facebook w-11" /></a>
                 <a href="#"><i class="fab fa-instagram w-11" /></a>
                 <a href="#"><i class="fab fa-google w-11" /></a>
@@ -87,7 +90,7 @@
             </div>
         </div>
         <div
-            class={`mr-2 mt-7  flex w-full min-w-[20rem] flex-col pl-10 pr-10 md:mr-16 md:mt-0 md:w-auto md:pl-3 md:pr-3`}
+            class={`mr-2 mt-7  flex w-full min-w-[20rem] flex-col pl-10 pr-10 text-center md:mr-16 md:mt-0 md:w-auto md:pl-3 md:pr-3 md:text-left`}
         >
             <h3 class="mb-3 text-2xl font-bold">Find us</h3>
             <div
@@ -112,7 +115,7 @@
             <h3 class="mb-3 text-2xl font-bold">Schedule</h3>
             <div class="flex flex-row justify-between">
                 <div class="font-bold">
-                    <ul class="flex list-none flex-col">
+                    <ul class="flex list-none flex-col text-sm">
                         {#each daysOfWeek as day}
                             <li class={`mb-3 ${isToday(day.value)}`}>
                                 <span>{day.name}</span>
@@ -121,7 +124,9 @@
                     </ul>
                 </div>
                 <div>
-                    <ul class="flex list-none flex-col outline-none">
+                    <ul
+                        class="md:text-md flex list-none flex-col text-sm outline-none"
+                    >
                         {#each daysOfWeek as day}
                             <li class={`mb-3 ${isToday(day.value)}`}>
                                 <span>{day.time}</span>
@@ -131,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class={`${sectionContainerStyle}`}>
+        <div class={`${sectionContainerStyle} text-center md:text-left`}>
             <h3 class="mb-3 text-2xl font-bold">Our Links</h3>
             <ul class="flex list-none flex-col outline-none">
                 <li class="mb-3">
@@ -171,7 +176,9 @@
     </div>
 </div>
 <div class="max-w-screen-2xl mt-7 flex w-full justify-center md:mt-1">
-    <div class="mb-2 flex w-full flex-col items-center">
+    <div
+        class="mb-2 flex w-full flex-col items-center text-center md:text-left"
+    >
         <a class="text-gray-500" href="#">Mentions légales</a>
         <p style="font-size: 1rem" class="text-black-300">
             Copyright &copy; {new Date().getFullYear()} Ebisu Restaurant. All rights
