@@ -6,7 +6,7 @@
         },
         {
             name: "About Us",
-            url: "#",
+            url: "#about",
         },
         {
             name: "Menu",
