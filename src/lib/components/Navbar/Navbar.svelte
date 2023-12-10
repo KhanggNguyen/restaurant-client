@@ -5,11 +5,18 @@
     import NavHamburger from "./NavHamburger.svelte";
 
     let isMobile = false;
-    
 
     let screenWidth;
 
     $: isMobile = screenWidth < parseInt(SCREENS.sm);
+
+    function scrollIntoView({ target }) {
+        const el = document.querySelector(target.getAttribute("href"));
+        if (!el) return;
+        el.scrollIntoView({
+            behavior: "smooth",
+        });
+    }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -19,7 +26,7 @@
 {:else}
     <div
         style="min-height: 68px;"
-        class="max-w-screen-2xl flex w-full flex-row items-center justify-between lg:pl-12 lg:pr-12"
+        class="sticky top-0 z-50 flex w-full max-w-screen-2xl flex-row items-center justify-between bg-white lg:pl-12 lg:pr-12"
     >
         <div>
             <Logo />

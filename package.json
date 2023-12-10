@@ -18,6 +18,7 @@
         "@sveltejs/adapter-auto": "^2.0.0",
         "@sveltejs/kit": "^1.20.4",
         "autoprefixer": "^10.4.14",
+        "date-picker-svelte": "^2.10.1",
         "gasp": "^0.0.2",
         "postcss": "^8.4.26",
         "prettier": "^2.8.8",

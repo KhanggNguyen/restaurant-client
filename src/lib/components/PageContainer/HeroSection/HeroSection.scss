@@ -1,9 +1,10 @@
 .standalone {
     width: auto;
-    height: 10em;
+    height: 100%;
     right: -6em;
-    top: -5em;
+    top: 0em;
     position: absolute;
+    overflow: hidden;
 
     .hero {
         width: auto;

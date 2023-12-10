@@ -1,11 +1,11 @@
 <script>
     import Logo from "../Logo/Logo.svelte";
-
+    import routes from "./routes.json";
     let openMobileNav = false;
 </script>
 
 <div
-    class="mx-auto flex w-full items-center justify-between border-b border-gray-400 px-8 py-8"
+    class="sticky top-0 z-50 mx-auto flex w-full items-center justify-between border-b border-gray-400 bg-white px-8 py-8"
 >
     <Logo />
 
@@ -51,18 +51,21 @@
                 <ul
                     class="flex min-h-[250px] flex-col items-center justify-between"
                 >
-                    <li class="my-8 border-b border-gray-400 uppercase">
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="my-8 border-b border-gray-400 uppercase">
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="my-8 border-b border-gray-400 uppercase">
-                        <a href="#">Menu</a>
-                    </li>
-                    <li class="my-8 border-b border-gray-400 uppercase">
-                        <a href="#">Reservation</a>
-                    </li>
+                    {#each routes as route}
+                        <li class="my-8 border-b border-gray-400 uppercase">
+                            <a
+                                href={route.url}
+                                on:keydown
+                                on:keyup
+                                on:keypress
+                                on:click={(e) => {
+                                    openMobileNav = false;
+                                }}
+                            >
+                                {route.name}
+                            </a>
+                        </li>
+                    {/each}
                 </ul>
             </div>
         </section>

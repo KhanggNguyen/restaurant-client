@@ -1,4 +1,5 @@
 <div
+    id="reservation"
     class="py-10 flex flex-col bg-[#F5F5F5] px-2 md:my-10 md:flex-row md:items-center md:justify-between"
 >
     <div class="my-auto pl-10 md:w-1/2">

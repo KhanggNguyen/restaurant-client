@@ -4,8 +4,9 @@
 </script>
 
 <div
+    id="hero"
     style="min-height: 400px; margin-top: 6em;"
-    class="max-w-screen-2xl flex w-full justify-between pl-3 pr-3 lg:pl-12 lg:pr-12"
+    class="flex w-full max-w-screen-2xl justify-between overflow-x-hidden pl-3 pr-3 lg:pl-12 lg:pr-12"
 >
     <div class="flex w-1/2 flex-col">
         <h1

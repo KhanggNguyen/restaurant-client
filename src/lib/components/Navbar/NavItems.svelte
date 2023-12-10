@@ -1,30 +1,19 @@
 <script>
-    const items = [
-        {
-            name: "Home",
-            url: "#",
-        },
-        {
-            name: "About Us",
-            url: "#about",
-        },
-        {
-            name: "Menu",
-            url: "#",
-        },
-        {
-            name: "Reservation",
-            url: "#",
-        },
-    ];
+    import routes from "./routes.json";
+
 </script>
 
 <ul class=" flex list-none">
-    {#each items as item}
+    {#each routes as route}
         <li
             class="mr-1 cursor-pointer text-sm font-medium text-black transition duration-300 ease-in-out hover:text-gray-700 md:mr-5 md:text-base"
         >
-            <a href={item.url}>{item.name}</a>
+            <a
+                href={route.url}
+                
+            >
+                {route.name}
+            </a>
         </li>
     {/each}
 </ul>

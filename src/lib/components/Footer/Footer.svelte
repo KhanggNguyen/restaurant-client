@@ -53,6 +53,7 @@
 </script>
 
 <div
+    id="footer"
     class="mx-5 flex flex-col items-center justify-center rounded-md bg-[#F5F5F5] pt-10 md:py-16"
 >
     <div

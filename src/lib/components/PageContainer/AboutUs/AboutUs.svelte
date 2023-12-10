@@ -3,6 +3,7 @@
 </script>
 
 <div
+    id="about"
     class="flex w-full flex-wrap items-center justify-center bg-white pb-4 pl-7 pr-7 pt-4 md:pl-0 md:pr-0"
 >
     <div class="img-container">
