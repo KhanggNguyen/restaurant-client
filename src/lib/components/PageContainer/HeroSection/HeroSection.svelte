@@ -1,6 +1,8 @@
 <script>
+    import { goto } from "$app/navigation";
     import Button from "../../Button/Button.svelte";
     import "./HeroSection.scss";
+    import { scrollIntoView } from "../../../../helpers/transition";
 </script>
 
 <div
@@ -30,7 +32,6 @@
         </p>
         <div class="mt-4 flex flex-wrap">
             <Button text="Menu" />
-            <Button theme="filled" text="Reservation" />
         </div>
     </div>
     <div class="relative flex w-1/2 flex-col">
