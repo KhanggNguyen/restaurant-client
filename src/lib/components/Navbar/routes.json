@@ -1,18 +1,22 @@
 [
     {
         "name": "Home",
-        "url": "/#hero"
+        "url": "/#hero",
+        "id": "hero"
     },
     {
         "name": "About Us",
-        "url": "/#about"
+        "url": "/#about",
+        "id": "about"
     },
     {
         "name": "Menu",
-        "url": "/menu"
+        "url": "/menu",
+        "id": "menu"
     },
     {
         "name": "Reservation",
-        "url": "/#reservation"
+        "url": "/#reservation",
+        "id": "reservation"
     }
 ]

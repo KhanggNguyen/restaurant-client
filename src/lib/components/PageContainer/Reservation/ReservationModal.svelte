@@ -1,20 +1,35 @@
 <script>
+    import axios from "axios";
     import DatePicker from "../../DatePicker/DatePicker.svelte";
     import Modal from "../../Modal/Modal.svelte";
     import ReservationTimeslot from "./ReservationTimeslot.svelte";
 
-    export let openModalReservation = false;
     let title = "Reservation";
     let mainActionTitle = "Confirm";
     let secondActionTitle = "Cancel";
+    let name = "Dupont";
+    let telephone = "0712345678";
+    let timeslot;
+    let email = "";
+    let today = new Date();
+    let date = `${today.getFullYear()}-${
+        today.getMonth() + 1
+    }-${today.getDate()}`;
+    let totalGuest = 1;
+    let note = "";
+    let telephoneError = false;
+    let classInputBorder = "border-gray-300";
 
-    let isFormValid = (data) => {
+    export let openModalReservation = false;
+
+    const isFormValid = (data) => {
         if (!isTelephoneValid(data["telephone"])) {
             return false;
         }
+        return true;
     };
 
-    let isTelephoneValid = (value) => {
+    const isTelephoneValid = (value) => {
         telephoneError = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/.test(
             telephone
         );
@@ -26,7 +41,7 @@
         return telephoneError;
     };
 
-    let handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         const formData = new FormData(e.target);
 
         const data = {};
@@ -34,24 +49,27 @@
             const [key, value] = field;
             data[key] = value;
         }
-
+        console.log(data);
         if (isFormValid(data)) {
-            console.log("data", data);
+            const res = await axios.post(`http://localhost:8000/v2/booking/`, {
+                name,
+                phone: telephone,
+                email,
+                date: new Date(date).toISOString(),
+                timeslot,
+                totalGuest,
+                note,
+            });
+
+            if (res.status === 200) {
+                console.log("ok", res.data);
+            } else {
+                console.error("something wrong: ", res.data.message);
+            }
         } else {
             console.error("Invalid Form");
         }
     };
-    let name = "";
-    let telephone = "";
-    let email = "";
-    let today = new Date();
-    let date = `${today.getFullYear()}-${
-        today.getMonth() + 1
-    }-${today.getDate()}`;
-    let totalGuest = 1;
-    let note = "";
-    let telephoneError = false;
-    let classInputBorder = "border-gray-300";
 </script>
 
 {#if openModalReservation}
@@ -72,7 +90,6 @@
                         class="focus:ring-primary-600 focus:border-primary-600 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400"
                         placeholder="Dupont"
                         bind:value={name}
-                        required=""
                     />
                 </div>
                 <div class="my-1">
@@ -138,9 +155,10 @@
                     <DatePicker required={true} bind:date />
                 </div>
                 <div class="my-1">
-                    
-
-                    <ReservationTimeslot bind:date />
+                    <ReservationTimeslot
+                        bind:date
+                        bind:selectedTimeSlot={timeslot}
+                    />
                 </div>
                 <div class="col-span-2">
                     <label

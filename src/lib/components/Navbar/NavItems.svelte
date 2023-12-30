@@ -1,6 +1,6 @@
 <script>
     import routes from "./routes.json";
-
+    import { scrollIntoView } from "../../../helpers/transition";
 </script>
 
 <ul class=" flex list-none">
@@ -10,7 +10,9 @@
         >
             <a
                 href={route.url}
-                
+                on:click|preventDefault={() => {
+                    scrollIntoView(route);
+                }}
             >
                 {route.name}
             </a>

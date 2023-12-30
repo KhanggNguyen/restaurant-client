@@ -5,15 +5,20 @@
     import Loader from "../../Loader/Loader.svelte";
 
     let timeslots = [];
-    let selectedTimeSlot;
     let today = new Date();
+    let todayYYYYMMDD = `${today.getFullYear()}-${
+        today.getMonth() + 1
+    }-${today.getDate()}`;
     let loading = false;
     let error = false;
     let messageError = "";
+    let defaultDateFormat = "YYYY-MM-DD";
 
+    export let name = "";
+    export let selectedTimeSlot;
     export let date = `${today.getFullYear()}-${
         today.getMonth() + 1
-    }-${today.getDay()}`;
+    }-${today.getDate()}`;
 
     const getTimeSlotAvailable = async (date) => {
         timeslots = [];
@@ -27,7 +32,6 @@
             res.data.shift.timeslots.forEach((shift) => {
                 timeslots = [...timeslots, ...generateTimes(shift)];
             });
-            console.log(timeslots);
         } else {
             error = true;
             messageError = res.data.message;
@@ -39,12 +43,21 @@
     const generateTimes = (timeslot) => {
         let ts = [];
 
+        const isToday = moment(todayYYYYMMDD, defaultDateFormat).isSame(
+            date,
+            defaultDateFormat
+        );
+
         let startTime = moment(timeslot.start, "HH:mm");
         let endTime = moment(timeslot.end, "HH:mm");
         let interval = convertHoursToMinutes(timeslot.interval);
         while (startTime < endTime) {
-            ts.push(new moment(startTime).format("HH:mm"));
-            startTime.add(interval, "minutes");
+            if (isToday && startTime.isBefore(moment())) {
+                startTime.add(interval, "minutes");
+            } else {
+                ts.push(new moment(startTime).format("HH:mm"));
+                startTime.add(interval, "minutes");
+            }
         }
         return ts;
     };
@@ -78,6 +91,8 @@
             <button
                 type="button"
                 tabindex="0"
+                {name}
+                class:bg-green-700={selectedTimeSlot === timeslot}
                 class="m-1 w-20 rounded-lg bg-green-500 p-2.5 text-center hover:bg-green-300"
                 on:click={() => (selectedTimeSlot = timeslot)}
             >

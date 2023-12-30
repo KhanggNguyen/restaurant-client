@@ -9,7 +9,7 @@
     class="flex flex-col bg-[#F5F5F5] px-2 py-10 md:my-10 md:flex-row md:items-center md:justify-between"
 >
     <div class="my-auto pl-10 md:w-1/2">
-        <p class="text-center text-lg text-sm md:text-2xl">
+        <p class="text-left text-lg text-sm md:text-2xl">
             Book your table now for a tantalizing taste of Southeast Asia at
             Ebisu Restaurant
         </p>
